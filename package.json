@@ -1,0 +1,28 @@
+{
+  "name": "circularclone",
+  "version": "0.1.0",
+  "description": "Clones circular object graphs in a non-recursive way",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aaaristo/circularclone.git"
+  },
+  "keywords": [
+    "json",
+    "graph",
+    "clone",
+    "object",
+    "non-recursive"
+  ],
+  "author": "aaaristo",
+  "license": "Apache2",
+  "bugs": {
+    "url": "https://github.com/aaaristo/circularclone/issues"
+  },
+  "dependencies": {
+    "circularjs": "~0.1.0"
+  }
+}
