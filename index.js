@@ -18,7 +18,14 @@ module.exports= function clone(orig,skipDelete)
         // values
         nodes.forEach(function (node,idx)
         {
-           var o= known[node.__visited], keys= keyss[idx];
+           var o= known[node.__visited], keys= keyss[idx],
+               copy= function (val,key)
+               {
+                  if (val&&typeof val=='object')
+                    o[key]= known[val.__visited];
+                  else
+                    o[key]= val;
+               };
 
            if (!_clone) _clone= o;
 
@@ -26,20 +33,10 @@ module.exports= function clone(orig,skipDelete)
              keys.forEach(function (key)
              {
                 var val= node[key];
-
-                if (val&&typeof val=='object')
-                  o[key]= known[val.__visited];
-                else
-                  o[key]= val;
+                copy(val,key); 
              });
            else
-             node.forEach(function (val,key)
-             {
-                if (val&&typeof val=='object')
-                  o[key]= known[val.__visited];
-                else
-                  o[key]= val;
-             });
+             node.forEach(copy);
         });
 
         if (!skipDelete)
