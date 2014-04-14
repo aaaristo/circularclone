@@ -1,4 +1,6 @@
 circularclone
 =============
 
-Clones circular object graphs in a non-recursive way
+Clones circular javascript object graphs,
+using [circularjs](https://github.com/aaaristo/circularjs) to
+traverse them.
