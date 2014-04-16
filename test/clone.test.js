@@ -58,4 +58,21 @@ describe('clone',function ()
           _clone[2][0].papa.should.equal(_clone[0]);
           done();
        });
+
+       it('should remove keys when the filter function returns undefined', function (done)
+       {
+          var orig= cir(), _clone= clone(orig,function (key,value,clone,node) { return key=='figlia2' ? undefined : value; });
+
+          should.not.exist(_clone[0].figlia2);
+
+          _clone[1].should.equal(orig[1]);
+          _clone[0].nome.should.equal(orig[0].nome);
+          _clone[0].figlia.nome.should.equal(orig[0].figlia.nome);
+          _clone.length.should.equal(orig.length);
+          _clone[2].length.should.equal(orig[2].length);
+          _clone[0].should.equal(_clone[2][1]);
+          _clone[2][0].should.equal(_clone[0].figlia);
+          _clone[2][0].papa.should.equal(_clone[0]);
+          done();
+       });
 });
