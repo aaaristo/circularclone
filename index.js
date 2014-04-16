@@ -4,7 +4,7 @@ module.exports= function clone(orig,skipDelete)
 {
     var _clone, known= [], nodes= [], keyss= [];
 
-    if (typeof orig=='object')
+    if (traverse.isNode(orig))
     {
         // structure
         traverse(orig,
