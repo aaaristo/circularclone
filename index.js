@@ -21,7 +21,7 @@ module.exports= function clone(orig,skipDelete)
            var o= known[node.__visited], keys= keyss[idx],
                copy= function (val,key)
                {
-                  if (val&&typeof val=='object')
+                  if (val&&traverse.isNode(val))
                     o[key]= known[val.__visited];
                   else
                     o[key]= val;
