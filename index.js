@@ -35,7 +35,7 @@ module.exports= function clone(orig,filter,skipDelete)
                           else
                             _val= val;
 
-                          _val= filter(key,_val,o,node);
+                          _val= filter(key,_val,o,node,val);
 
                           if (_val!==undefined)
                             o[key]= _val;
