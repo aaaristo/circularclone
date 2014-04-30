@@ -1,25 +1,31 @@
 var traverse   = require('circularjs');
 
-module.exports= function clone(orig,filter,skipDelete)
+module.exports= function clone(orig,filter,stopper,skipDelete)
 {
-    if (arguments.length==2&&!typeof filter=='function')
-    {
-      skipDelete= filter;
-      filter= undefined;
-    }
-
     var _clone, known= [], nodes= [], keyss= [];
 
     if (traverse.isNode(orig))
     {
-        // structure
-        traverse(orig,
-        function (node,keys)
+        var fn= function (node,keys)
         {
            var x= known[node.__visited]= Array.isArray(node) ? [] : {};
+
            nodes.push(node);
            keyss.push(keys);
-        },true);
+        };
+
+        if (stopper)
+          fn= (function (fn)
+               {
+                 return function (node,keys)
+                 {
+                     fn(node,keys);
+                     return stopper(node);
+                 };
+               })(fn);
+
+        // structure
+        traverse(orig,fn,true);
 
         // values
         nodes.forEach(function (node,idx)

@@ -1,6 +1,6 @@
 {
   "name": "circularclone",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Clones circular object graphs in a non-recursive way",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "url": "https://github.com/aaaristo/circularclone/issues"
   },
   "dependencies": {
-    "circularjs": "~0.1.0"
+    "circularjs": "~0.1.3"
   },
   "devDependencies": {
     "chai": "~1.9.1"
