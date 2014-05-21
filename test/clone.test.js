@@ -61,7 +61,7 @@ describe('clone',function ()
 
        it('should remove keys when the filter function returns undefined', function (done)
        {
-          var orig= cir(), _clone= clone(orig,function (key,value,clone,node) { return key=='figlia2' ? undefined : value; });
+          var orig= cir(), _clone= clone(orig,function (key,value,clone,node,origValue,known) { return key=='figlia2' ? undefined : value; });
 
           should.not.exist(_clone[0].figlia2);
 
